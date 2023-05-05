@@ -1,0 +1,39 @@
+syntax = "proto3";
+package generation;
+
+service GenerationService {
+    rpc Generate (GenerationRequestProto) returns (GenerationResponseProto) {}
+    rpc Forward (ForwardRequestProto) returns (ForwardResponseProto) {}
+}
+
+message Value {
+    oneof oneof_values {
+        string svalue = 1;
+        int64 ivalue = 2;
+        float fvalue = 3;
+        bool bvalue = 4;
+    }
+}
+
+message GenerationRequestProto {
+    repeated string texts = 1;
+    map<string,Value> generate_kwargs = 2;
+}
+
+message GenerationResponseProto {
+    repeated string texts = 1;
+    repeated int32 num_generated_tokens = 2;
+    string error = 3;
+    bool is_encoder_decoder = 4;
+}
+
+message ForwardRequestProto {
+    repeated string conditioning_text = 1;
+    repeated string response = 2;
+}
+
+message ForwardResponseProto {
+    float nll = 1;
+    string error = 2;
+    bool is_encoder_decoder = 3;
+}

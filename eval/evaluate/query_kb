@@ -1,0 +1,12 @@
+use('structure_lm');
+
+db.evaluation.find({
+    "evaluation.entity_OOD_cnt": {$gt: 0},
+    "evaluation.relation_In_KB_expand_cnt": {$gt: 0},
+    "source": "cnn_dailymail_highlights"
+}).limit(1);
+
+//ent_ood_sample_cnt = db.evaluation.aggregate([
+//    {$match: {"evaluation.entity_OOD_cnt": {$gt: 0}}},
+//    {$count: "sample_with_ood_entities"}
+//]);
