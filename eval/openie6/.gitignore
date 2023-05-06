@@ -1,0 +1,15 @@
+jobs
+__pycache__
+transformers
+!carb/data
+!imojie/allennlp/allennlp/data
+!imojie/allennlp/allennlp/models
+carb/data/*.pkl*
+*.ckpt*
+plotdir
+.vscode
+data
+models
+*tar.gz
+sentences.txt
+predictions.txt*
